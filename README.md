@@ -13,7 +13,8 @@ paila jun directory ma JARVIS xa tei jane ani
 `git pull` 
 
 garne 
-aba sabae edit ma github ma sync garxu herdae gara ani koi edit garne vaye pani garda hunxa tara test nagari push chai nagara 
+
+Aba sabae edit ma github ma sync garxu pull grdae sync gardae gara ani koi edit garna man vaye pani garda hunxa tara test nagari push chai nagara 
 
 # Push garna ko lagi 
 
