@@ -21,4 +21,4 @@ Aba sabae edit ma github ma sync garxu pull grdae sync gardae gara ani koi edit 
 `git push -u origin master`
 
 maile contributer ma add gareko xu vane matra push garna milxa hai 
-
+Xito deu hai github id ani ma Add gardinxu Contributers ma natra push grna mildena
