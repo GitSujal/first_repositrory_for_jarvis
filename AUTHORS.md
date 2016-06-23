@@ -21,3 +21,5 @@ Jasper. Thanks a lot!
 
 We'd also like to thank all the people who reported bugs, helped
 answer newbie questions, and generally made Jasper better.
+
+And Now we are going to make major changes on JASPER to meet our needs.
