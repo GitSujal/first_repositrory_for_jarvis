@@ -10,7 +10,7 @@ And now it's being modified and renamed as JARVIS by
     
     Sujal Dhungana <(dhunganasujal9@gmail.com)>
    
-    and others who will put their names kater 
+    and others who will put their names later 
 
 
 We'd also like to thank all the people who reported bugs, helped
