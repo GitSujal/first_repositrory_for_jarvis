@@ -11,8 +11,10 @@ jaile pani repo sync garauna ko lagi
 paila jun directory ma JARVIS xa tei jane ani 
 
 `git pull` 
+
 garne 
 aba sabae edit ma github ma sync garxu herdae gara ani koi edit garne vaye pani garda hunxa tara test nagari push chai nagara 
+
 # Push garna ko lagi 
 
 `git push -u origin master`
