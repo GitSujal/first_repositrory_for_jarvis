@@ -614,7 +614,9 @@ class WitAiSTT(AbstractSTTEngine):
             if text:
                 transcribed.append(text.upper())
             self._logger.info('Transcribed: %r', transcribed)
-            return transcribed
+            transcribed = raw_input('type here: ')  #this is the change 
+           return transcribed 
+
 
     @classmethod
     def is_available(cls):
