@@ -1,7 +1,4 @@
-import Wiringpi
-import sys
-import time
-import re
+
 
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
 PRIORITY = 1
@@ -11,7 +8,7 @@ ValidStop = ["stop","STOP","HALT","halt","there"]
 Serial_message = [000,001,010,011,100,101,110,111]
 
 def carcontrol(mic):
-Direction = mic.activeListen()
+	Direction = mic.activeListen()
 	if Direction in ValidDirection:
 		handledirection(mic,Direction)
 		mic.say("I'm going %s tell me when to stop",Direction)
