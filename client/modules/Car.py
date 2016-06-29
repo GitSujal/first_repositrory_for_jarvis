@@ -18,9 +18,9 @@ def carcontrol(mic):
 			permission = mic.activeListen()
 			if permission == "yes" | "YES" | "ok" | "OK":
 				takeselfie(mic)
-				else:
+			else:
 					return
-			else: 
+		else: 
 				carcontrol()
 	else:
 		mic.say("That's not a valid direction")
