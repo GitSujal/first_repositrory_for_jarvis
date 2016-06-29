@@ -16,7 +16,7 @@ def carcontrol(mic):
 		if stop in ValidStop:
 			mic.say("I'm in position now would you like  a selfie")
 			permission = mic.activeListen()
-			if permission == "yes" | "YES" | "ok" | "OK"
+			if permission == "yes" | "YES" | "ok" | "OK":
 				takeselfie(mic)
 				else:
 					return
