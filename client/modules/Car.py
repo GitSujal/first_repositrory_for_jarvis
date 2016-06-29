@@ -1,4 +1,4 @@
-
+import re
 
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
 PRIORITY = 1
@@ -11,7 +11,7 @@ def carcontrol(mic):
 	Direction = mic.activeListen()
 	if Direction in ValidDirection:
 		handledirection(mic,Direction)
-		mic.say("I'm going %s tell me when to stop",Direction)
+		mic.say("I'm going %s tell me when to stop" %Direction)
 		stop = mic.activeListen()
 		if stop in ValidStop:
 			mic.say("I'm in position now would you like  a selfie")
@@ -21,7 +21,7 @@ def carcontrol(mic):
 			else:
 					return
 		else: 
-				carcontrol()
+				carcontrol(mic)
 	else:
 		mic.say("That's not a valid direction")
 		carcontrol(mic)
@@ -29,15 +29,15 @@ def carcontrol(mic):
 
 
 def handledirection(mic,Direction):
-	if Direction == "LEFT" | "left":
+	if Direction ==  "left":
 		transimitmessage = Serial_message[1]
-	if Direction == "RIGHT" | "right":
+	if Direction == "right":
 		transimitmessage = Serial_message[2]
 	
-	if Direction == "AHEAD" | "ahead" |"FORWARD" | "forward":
+	if Direction == "AHEAD":# | "ahead" |"FORWARD" | "forward":
 		transimitmessage = Serial_message[3]
 	
-	if Direction == "back" | "BACK" | "BACKWARD" |"backward":
+	if Direction == "back":# | "BACK" | "BACKWARD" |"backward":
 		transimitmessage = Serial_message[4]
 	return
 
@@ -52,7 +52,7 @@ def isValid(text):
     return bool(re.search(r'\b(CAR|Selfie|Camera)\b', text, re.IGNORECASE))
  
 
-def handle(text, mic):
+def handle(text,mic,profile):
 	mic.say("I'm controlling selfie-bot now give me directions")
 	carcontrol(mic)
 	return	
