@@ -72,4 +72,4 @@ def isValid(text):
     elif fanbool:
     	return fanbool
     else :
-    		return False
+    	return False
