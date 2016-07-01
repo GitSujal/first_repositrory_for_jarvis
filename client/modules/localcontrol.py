@@ -33,11 +33,12 @@ def handlefan(text,mic):
 		mic.say("I turned on the fan")
 		return
 	elif text in VALID_OFF:
-				mic.say("Fan turned off remember me when you feel hot again")
-		response = mic.activeListen()
+		mic.say("Fan turned off remember me when you feel hot again")
 		return
-		else:
-			return
+	
+	else:
+		return
+		
 	return
 	
 
