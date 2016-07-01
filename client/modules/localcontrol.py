@@ -9,6 +9,8 @@ VALID_DIM = ["DIM","dim","DIMMER","dimmer","low","LOW"]
 VALID_BRIGHT  = ["BRIGHT","bright","BRIGHTER","brighter","high","HIGHER"]
 VALID_ON = ["ON", "HOT","FAN ON","on","hot","fan on","YES","yes"]
 VALID_OFF = ["OFF","COLD","off","cold","no","NO","NOT","not"]
+
+bool bulbbool,fanbool
 def handlebulb(text,mic):
 	if text in VALID_DIM:
 		mic.say("I dimmed the bulb do you like this brightness")
@@ -41,8 +43,6 @@ def handlefan(text,mic):
 		
 	return
 	
-
-
 def handle(text, mic,profile):
 	if bulbbool:
 		mic.say("I'm controlling bulb.")
@@ -55,8 +55,6 @@ def handle(text, mic,profile):
 		return
 
 	return	
-
-
 
 def isValid(text):
     """
@@ -73,3 +71,5 @@ def isValid(text):
     	return fanbool
     else :
     	return False
+
+
