@@ -11,7 +11,7 @@ VALID_ON = ["ON", "HOT","FAN ON","on","hot","fan on","YES","yes"]
 VALID_OFF = ["OFF","COLD","off","cold","no","NO","NOT","not"]
 
 bulbbool = False
-fanbool - False
+fanbool = False
 def handlebulb(text,mic):
 	if text in VALID_DIM:
 		mic.say("I dimmed the bulb do you like this brightness")
