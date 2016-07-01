@@ -43,7 +43,7 @@ def handlefan(text,mic):
 	
 
 
-def handle(text, mic):
+def handle(text, mic,profile):
 	if bulbbool:
 		mic.say("I'm controlling bulb.")
 		handlebulb(text,mic)
