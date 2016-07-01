@@ -67,9 +67,9 @@ def isValid(text):
     """
     bulbbool =  bool(re.search(r'\b(LIGHT | DIM | BRIGHT) \b', text, re.IGNORECASE))
     fanbool =  bool(re.search(r'\b(COLD | HOT | Fan)\b', text, re.IGNORECASE))
-    	 if bulbbool: 
-    		return bulbbool
-    	elif fanbool:
-    		return fanbool
-    	else :
+    if bulbbool: 
+    	return bulbbool
+    elif fanbool:
+    	return fanbool
+    else :
     		return False
