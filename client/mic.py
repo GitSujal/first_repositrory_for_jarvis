@@ -28,5 +28,8 @@ class Mic:
         self.prev = input
         return input
 
-    def say(self, phrase, OPTIONS=None):
-        print("JASPER: %s" % phrase)
+     def say(self, phrase,
+            OPTIONS=" -vdefault+m3 -p 40 -s 160 --stdout > say.wav"):
+        # alter phrase before speaking
+        phrase = alteration.clean(phrase)
+        self.speaker.say(phrase)
