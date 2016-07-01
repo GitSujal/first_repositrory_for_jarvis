@@ -65,7 +65,7 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    bulbbool =  bool(re.search(r'\b(LIGHT | DIM | BRIGHT) \b', text, re.IGNORECASE))
+    bulbbool =  bool(re.search(r'\b(LIGHT | DIM | BRIGHT)\b', text, re.IGNORECASE))
     fanbool =  bool(re.search(r'\b(COLD | HOT | Fan)\b', text, re.IGNORECASE))
     if bulbbool: 
     	return bulbbool
