@@ -13,15 +13,15 @@ def handlebulb(text,mic):
 	if text in VALID_DIM:
 		mic.say("I dimmed the bulb do you like this brightness")
 		response = mic.activeListen()
-		if response not = yes or YES or OK or ok:
+		if response == "yes":
 			mic.say("Previous brightness restored")
 			return
 		else:
 			return
 	elif text in VALID_BRIGHT:
-				mic.say("I increased birhgtness do you like this brightness")
+		mic.say("I increased birhgtness do you like this brightness")
 		response = mic.activeListen()
-		if response not = yes or YES or OK or ok:
+		if response == "yes":
 			mic.say("Previous brightness restored")
 			return
 		else:
