@@ -1,5 +1,5 @@
 import bluetooth
-from time import sleep
+
 
 i = int(0)
 bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
@@ -13,11 +13,16 @@ while True:
   i+=1
   if i==1:
       s.send('a')
-      sleep(45000)
+  elif (i ==2):
+  		s.send('b')
+  elif (i ==3):
+  		s.send('c')
+  elif (i ==4):
+  		s.send('d')				
   else:
-      s.send('b')
-      sleep(53000)
-  if(i==6):
+      s.send('e')
+
+  if(i==10):
           i=0
 print("Closing socket")
 s.close()

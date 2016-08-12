@@ -1,11 +1,20 @@
 import re
+import 
+from time import sleep
+i = int(0)
+bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
+port = 1
 
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
 PRIORITY = 1
 
-ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","left","right","forward","backward","ahead","back"]
+s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+s.connect((bd_addr, port))
+print "conected to "+ bd_addr
+
+ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","left","right","forward","backward","ahead","back","off","OFF"]
 ValidStop = ["stop","STOP","HALT","halt","there"]
-Serial_message = [000,001,010,011,100,101,110,111]
+Serial_message = ['z','a','b','c','d','e','f','g']
 
 def carcontrol(mic):
 	Direction = mic.activeListen()
@@ -30,19 +39,35 @@ def carcontrol(mic):
 
 def handledirection(mic,Direction):
 	if Direction ==  "left":
-		transimitmessage = Serial_message[1]
-	if Direction == "right":
 		transimitmessage = Serial_message[2]
+		s.send(transimitmessage)
+		sleep(5000)
+		s.send('z')
+
+	if Direction == "right":
+		transimitmessage = Serial_message[3]
+		s.send(transimitmessage)
+		sleep(5000)
+		s.send('z')
 	
 	if Direction == "AHEAD":# | "ahead" |"FORWARD" | "forward":
-		transimitmessage = Serial_message[3]
+		transimitmessage = Serial_message[4]
+		s.send(transimitmessage)
+		sleep(5000)
+		s.send('z')
 	
 	if Direction == "back":# | "BACK" | "BACKWARD" |"backward":
-		transimitmessage = Serial_message[4]
+		transimitmessage = Serial_message[5]
+		s.send(transimitmessage)
+		sleep(5000)
+		s.send('z')
+	if Direction == "off":# | "BACK" | "BACKWARD" |"backward":
+		s.send('z')
+		s.close()
 	return
 
 def takeselfie():
-	mic.say("Taking selfie 		smile")
+	mic.say("Taking selfie smile")
 	return
 
 
