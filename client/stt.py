@@ -17,8 +17,6 @@ import diagnose
 import vocabcompiler
 import datetime
 
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-
 class AbstractSTTEngine(object):
     """
     Generic parent class for all STT engines
