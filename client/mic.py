@@ -179,7 +179,7 @@ class Mic:
             transcribed = self.passive_stt_engine.transcribe(f)
 
         #if any(PERSONA in phrase for phrase in transcribed):
-        if true:
+        if True:
             return (THRESHOLD, PERSONA)
 
         return (False, transcribed)
