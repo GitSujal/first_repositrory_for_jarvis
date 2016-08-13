@@ -4,13 +4,11 @@ import re
 import os
 import sys
 
-WORDS = ["RESTART", "REBOOT", "SHUT DOWN","SHUT UP"]
-
+WORDS = ["RESTART", "REBOOT", "SHUT DOWN","SHUT UP","restart","reboot"]
+PRIORITY = 5;
 
 def handle(text, mic, profile):
     
-
-
     #HANDLE REBOOT
     if "reboot" in text.lower():
 
@@ -54,12 +52,6 @@ def handle(text, mic, profile):
 	os.system("pkill -f jasper.py")
 
 def isValid(text):
-    """
-        Returns True if the input is related to the meaning of life.
-
-        Arguments:
-        text -- user-input, typically transcribed speech
-    """
     return bool(re.search(r'\b((restart|reboot|shut) (yourself|up))\b', text, re.IGNORECASE))
 
 
