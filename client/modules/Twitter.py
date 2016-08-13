@@ -26,7 +26,7 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
 	
 	mentions = api.mentions_timeline()
 	retweets = api.retweets_of_me()
-	
+	directMessages = api.direct_messages()
 	
 	for mention in mentions:
 		if mention.id > latestMention:
@@ -38,6 +38,10 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
 			latestRetweets.append(retweet)
 			latestRetweetsID.append(retweet.id)
 
+	for directMessage in directMessages:
+		if directMessage.id > latestDirectMessage:
+			latestDirectMessages.append(directMessage)
+			latestDirectMessagesID.append(directMessage.id)
 
 	if len(latestRetweets) > 0:
 		mic.say("Latest Retweets are")
@@ -67,6 +71,21 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
 	
 	else:
 		mic.say("You have no mentions")
+
+	if len(latestDirectMessages) > 0:
+		mic.say("Latest Direct Messages are")
+		
+		for directMessageFinal in latestDirectMessages:
+			mic.say(directMessageFinal.text + " from " + directMessageFinal.user.screen_name)
+
+		latestDirectMessagesID.sort()
+		latestDirectMessage = latestDirectMessagesID[-1]
+		directMessageIDFile = open('directMessageID.txt', 'w')
+		directMessageIDFile.write(str(latestDirectMessage))
+		directMessageIDFile.close()
+
+	else:
+		mic.say("You have no Direct Messages")
 
 	return
 
@@ -103,6 +122,19 @@ def handle(text, mic, profile):
 	auth.set_access_token(access_token, access_token_secret)
 	api = tweepy.API(auth)
 	myTwitterID = api.me().id
+	directMessages = api.direct_messages(count=1)
+
+	try:
+		directMessageIDFile = open('directMessageID.txt', 'r')
+		directMessageID = directMessageIDFile.readline()
+		latestDirectMessage = int(directMessageID)
+		directMessageIDFile.close()
+	except IOError:
+		for directMessage in directMessages:
+			latestDirectMessage = directMessage.id
+		directMessageIDFile = open('directMessageID.txt', 'w')
+		directMessageIDFile.write(str(latestDirectMessage))
+		directMessageIDFile.close()
 
 	mentions = api.mentions_timeline(count=1)
 
