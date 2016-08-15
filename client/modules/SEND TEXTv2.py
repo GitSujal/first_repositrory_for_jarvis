@@ -53,7 +53,7 @@ def handle(text, mic, profile):
 
     buffer = StringIO()
     c = pycurl.Curl()
-    c.setopt(c.URL, 'http://textbelt.com/text')
+    c.setopt(c.URL, 'http://textbelt.com/intl')
     c.setopt(c.POSTFIELDS, 'number=%s&message=%s' %(num, msg))
     c.setopt(c.WRITEDATA, buffer)
     c.perform()
