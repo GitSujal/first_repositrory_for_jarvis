@@ -19,10 +19,10 @@ def handle(text, mic, profile):
             line = p.readline()
             if i==2:
                 return(line.split()[1:5])
+
     w = getdiskspace()
     w1 = w[3]
     w2 = w[2].replace("M","")
-
     os1, name, version, _, _, _ = platform.uname()
     version = version.split('-')[0]
     cores = psutil.cpu_count()
