@@ -1,5 +1,6 @@
 import os
 import re
+import random
 
 WORDS = ["PLAY","play","MUSIC","music","SONG","song"]
 PRIORITY = 2 
