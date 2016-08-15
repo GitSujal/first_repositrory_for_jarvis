@@ -1,4 +1,5 @@
 import os
+import re
 
 WORDS = ["PLAY","play","MUSIC","music","SONG","song"]
 PRIORITY = 2 
