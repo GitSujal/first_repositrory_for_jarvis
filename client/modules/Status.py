@@ -10,16 +10,16 @@ WORDS = ["STATUS"]
 def isValid(text):
     return bool(re.search(r'\b(status)\b', text, re.IGNORECASE))
 
-def handle(text, mic, profile):
-     def getdiskspace():
+ def getdiskspace():
         p = os.popen("df -h /")
         i = 0
         while 1:
             i = i +1
             line = p.readline()
             if i==2:
-                return(line.split()[1:5])
+                return(line.split()[1:5])    
 
+def handle(text, mic, profile):
     w = getdiskspace()
     w1 = w[3]
     w2 = w[2].replace("M","")
