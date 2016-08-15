@@ -3,6 +3,7 @@ import re
 import psutil
 import platform
 import datetime
+import os
 
 WORDS = ["STATUS"]
 
@@ -10,7 +11,7 @@ def isValid(text):
     return bool(re.search(r'\b(status)\b', text, re.IGNORECASE))
 
 def handle(text, mic, profile):
-    os, name, version, _, _, _ = platform.uname()
+    os1, name, version, _, _, _ = platform.uname()
     version = version.split('-')[0]
     cores = psutil.cpu_count()
     cpu_percent = psutil.cpu_percent()
@@ -22,7 +23,7 @@ def handle(text, mic, profile):
     temp = t.replace("temp=","").replace("'C\n","")
     message = ("cpu temperature is %s degrees celsius." %temp)
 
-    response = "I am currently running on %s version %s.  " %(os, version)
+    response = "I am currently running on %s version %s.  " %(os1, version)
     response += "This system is named %s and has %s CPU cores.  " %(name, cores)
     response += "Current CPU utilization is %s percent.  " %cpu_percent
     response += "Current memory utilization is %s percent." %memory_percent
