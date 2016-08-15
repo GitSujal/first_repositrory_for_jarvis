@@ -10,7 +10,8 @@ WORDS = ["STATUS"]
 def isValid(text):
     return bool(re.search(r'\b(status)\b', text, re.IGNORECASE))
 
- def getdiskspace():
+
+def getdiskspace():
         p = os.popen("df -h /")
         i = 0
         while 1:
