@@ -5,7 +5,7 @@ import re
 from dateutil import parser
 
 WORDS = ["EMAIL", "INBOX"]
-
+PRIORITY = 0
 
 def getSender(email):
     """
