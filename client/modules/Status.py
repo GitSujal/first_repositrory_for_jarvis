@@ -40,8 +40,8 @@ def handle(text, mic, profile):
     response = "I am currently running on %s version %s.  " %(os1, version)
     response += "This system is named %s and has %s CPU cores.  " %(name, cores)
     response += "Current CPU utilization is %s percent.  " %cpu_percent
-    response += message
-    response += "Current memory utilization is %s percent." %memory_percent
     response += message2
+    response += "Current memory utilization is %s percent." %memory_percent
+    response += message
     
     mic.say(response)
