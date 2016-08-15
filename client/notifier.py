@@ -39,19 +39,6 @@ class Notifier(object):
         [client.run() for client in self.notifiers]
 
     def handleEmailNotifications(self, lastDate):
-        """Places new Gmail notifications in the Notifier's queue."""
-       """ emails = Gmail.fetchUnreadEmails(self.profile, since=lastDate)
-        if emails:
-            lastDate = Gmail.getMostRecentDate(emails)
-
-        def styleEmail(e):
-            return "New email from %s." % Gmail.getSender(e)
-
-        for e in emails:
-            self.q.put(styleEmail(e))
-
-        return lastDate
-        """
         return 0
 
     def getNotification(self):
