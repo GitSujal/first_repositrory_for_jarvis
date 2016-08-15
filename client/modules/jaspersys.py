@@ -39,7 +39,7 @@ def handle(text, mic, profile):
         final += random.choice(messages2)
 
         mic.say(final)
-	os.execv("/usr/share/jasper-voice-control/jasper.py", sys.argv)
+	os.execv("/home/pi/jasper-client/jasper.py", sys.argv)
 
         #HANDLE SHUTDOWN 
     if ( ("shut" in text.lower()) and ("down" in text.lower())) or (("shut" in text.lower()) and ("down" in text.lower())):
