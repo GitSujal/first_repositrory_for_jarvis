@@ -22,11 +22,11 @@ def handle(text, mic, profile):
     filename = os.path.join(fileDir, '../../Logs/'+filename)
     filename = os.path.abspath(os.path.realpath(filename))
     with open(filename, "a") as myfile:
-    print("Name of the file: ", myfile.name)
-    print("Opening mode : ", myfile.mode)
-    myfile.write(text + '\t' +  issue_time )
-    myfile.close()
-    print("File Closed : ", myfile.closed)
+     print("Name of the file: ", myfile.name)
+        print("Opening mode : ", myfile.mode)
+        myfile.write(text + '\t' +  issue_time )
+        myfile.close()
+        print("File Closed : ", myfile.closed)
 
     mic.say(message)
 
