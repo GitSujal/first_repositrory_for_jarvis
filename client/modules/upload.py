@@ -5,7 +5,7 @@ import os
 
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 
-WORDS = ["update","DATABASE","database","UPLOAD","upload","UPDATE"]
+WORDS = ["update","DATABASE","database","UPLOAD","upload",]
 PRIORITY = 1
 
 def isValid(text):
@@ -13,9 +13,9 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	filename = "Missed_Commands.txt"
-	filename = os.path.join(fileDir, '../Logs/'+filename)
-	filename = os.path.abspath(os.path.realpath(filename))
+	filename = "Logs/Missed_Commands..txt"
+	#filename = os.path.join(fileDir, '../Logs/'+filename)
+	#filename = os.path.abspath(os.path.realpath(filename))
 	ftp = ftplib.FTP('ftp.offerharu.com')
 	ftp.login('jarvisai','minor#468&Net')
 	ftp.cwd('Data')
