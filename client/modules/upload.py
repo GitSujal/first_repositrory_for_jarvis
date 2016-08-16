@@ -25,6 +25,6 @@ def isValid(text):
 def handle(text,mic,profile):
 	filename = "Missed_Commands.txt"
 	filename = os.path.join(fileDir, '../Logs/'+filename)
-    filename = os.path.abspath(os.path.realpath(filename))
+	filename = os.path.abspath(os.path.realpath(filename))
     upload(mic,filename)
 	return	
