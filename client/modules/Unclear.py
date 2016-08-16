@@ -5,7 +5,6 @@ import random
 import os
 
 fileDir = os.path.dirname(os.path.realpath('__file__'))
-filename = "Missed_Commands.txt"
 
 WORDS = []
 PRIORITY = -(maxint + 1)
@@ -13,6 +12,7 @@ PRIORITY = -(maxint + 1)
 
 def handle(text, mic, profile):
     date_string = datetime.datetime.now()
+    filename = "Missed_Commands.txt"
     issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
     messages = ["I'm sorry, could you repeat that?",
                 "My apologies, could you try saying that again?",
