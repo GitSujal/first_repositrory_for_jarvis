@@ -19,7 +19,7 @@ def handle(text, mic, profile):
                 "Say that again?", "I beg your pardon?","Sorry I miss this command I would upload this request and hope next time you'll get execution for this command","Sorry Try any other command"]
 
     message = random.choice(messages)
-    filename = os.path.join(fileDir, '../../Logs/'+filename)
+    filename = os.path.join(fileDir, '../Logs/'+filename)
     filename = os.path.abspath(os.path.realpath(filename))
     with open(filename, "a") as myfile:
         print("Name of the file: ", myfile.name)
