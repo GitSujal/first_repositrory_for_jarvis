@@ -9,6 +9,18 @@ fileDir = os.path.dirname(os.path.realpath('__file__'))
 WORDS = []
 PRIORITY = -(maxint + 1)
 
+def logdata(filename,issue_time):
+    filename = os.path.join(fileDir, '../Logs/'+filename)
+    filename = os.path.abspath(os.path.realpath(filename))
+    with open(filename, "a") as myfile:
+        print("Name of the file: ", myfile.name)
+        print("Opening mode : ", myfile.mode)
+        myfile.write('\n'+ text + '\t' +  issue_time )
+        myfile.close()
+        print("File Closed : ", myfile.closed)
+    return 
+
+
 
 def handle(text, mic, profile):
     date_string = datetime.datetime.now()
@@ -19,15 +31,7 @@ def handle(text, mic, profile):
                 "Say that again?", "I beg your pardon?","Sorry I miss this command I would upload this request and hope next time you'll get execution for this command","Sorry Try any other command"]
 
     message = random.choice(messages)
-    filename = os.path.join(fileDir, '../Logs/'+filename)
-    filename = os.path.abspath(os.path.realpath(filename))
-    with open(filename, "a") as myfile:
-        print("Name of the file: ", myfile.name)
-        print("Opening mode : ", myfile.mode)
-        myfile.write('\n'+ text + '\t' +  issue_time )
-        myfile.close()
-        print("File Closed : ", myfile.closed)
-
+    logdata(filename,issue_time)
     mic.say(message)
 
 
