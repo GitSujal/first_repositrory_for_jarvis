@@ -10,13 +10,13 @@ WORDS = []
 PRIORITY = -(maxint + 1)
 
 def logdata(filename,text):
-    issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
+    issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +' , '+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
     filename = os.path.join(fileDir, '../Logs/'+filename)
     filename = os.path.abspath(os.path.realpath(filename))
-    with open(filename, "a") as myfile:
+    with open(filename, "w") as myfile:
         print("Name of the file: ", myfile.name)
         print("Opening mode : ", myfile.mode)
-        myfile.write('\n'+ text + '\t' +  issue_time )
+        myfile.write('\n'+ text + ' , ' +  issue_time )
         myfile.close()
         print("File Closed : ", myfile.closed)
     return 
