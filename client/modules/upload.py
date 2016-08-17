@@ -13,9 +13,9 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	filename = "Logs/Missed_Commands..txt"
-	#filename = os.path.join(fileDir, '../Logs/'+filename)
-	#filename = os.path.abspath(os.path.realpath(filename))
+	filename = "Missed_Commands.txt"
+	filename = os.path.join(fileDir, '../Logs/'+filename)
+	filename = os.path.abspath(os.path.realpath(filename))
 	ftp = ftplib.FTP('ftp.offerharu.com')
 	ftp.login('jarvisai','minor#468&Net')
 	ftp.cwd('Data')
