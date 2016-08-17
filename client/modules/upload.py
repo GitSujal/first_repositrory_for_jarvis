@@ -17,7 +17,7 @@ def handle(text,mic,profile):
 	ftp = ftplib.FTP('ftp.offerharu.com')
 	ftp.login('jarvisai','minor#468&Net')
 	ftp.cwd('Data')
-	myfile = open('/Users/pi/Logs/Missed_Commands.txt','rb')
+	myfile = open('/home/pi/Logs/Missed_Commands.txt','rb')
 	ftp.storlines('STOR ' + filename , myfile)
 	ftp.quit()
 	mic.say("Database updated and closed successfully")	
