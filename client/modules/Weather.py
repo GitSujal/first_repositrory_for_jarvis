@@ -89,12 +89,12 @@ def handle(text, mic, profile):
         mic.say(weather_suggestion)
 
     elif ("hot" in text.lower()) or ("temperature" in text.lower()) or ("cold" in text.lower()):
-    logdata(filename,text)
-	mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
+        logdata(filename,text)
+	   mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
     elif "rain" in text.lower():
-    logdata(filename,text)
-	rainprop = rain(weather_com_result['forecasts'])
-	mic.say(rainprop)
+        logdata(filename,text)
+	   rainprop = rain(weather_com_result['forecasts'])
+	   mic.say(rainprop)
 
     else :
     	mic.say(weather)

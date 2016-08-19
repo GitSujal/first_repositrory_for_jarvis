@@ -9,9 +9,9 @@ WORDS = ["update","DATABASE","database","UPLOAD","upload",]
 PRIORITY = 1
 
 def updatedatabase(filename,profile):
-	if 'ftp_pwd' in profile:    
-        ftp_pwd = profile['ftp_pwd']
-        ftp = ftplib.FTP('ftp.offerharu.com')
+	if 'ftp_pwd' in profile:
+		ftp_pwd = profile['ftp_pwd']
+		ftp = ftplib.FTP('ftp.offerharu.com')
 		ftp.login('jarvisai',ftp_pwd)
 		ftp.cwd('Data')
 		myfile = open('/home/pi/Logs/Missed_Commands.txt','rb')
