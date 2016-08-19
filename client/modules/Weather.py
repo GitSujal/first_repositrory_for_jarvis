@@ -72,14 +72,30 @@ def rain(list):
 
     return string
 
+def rainchance(list):
+    
+    date = datetime.now().day
+    integer = 0
+    loc = 0
+    string = ""
+
+    for day in list:
+        if str(date) in day["date"].lower():
+            loc = integer
+
+        integer +=1
+
+    likelyhood_string = list[loc]["day"]["chance_precip"]
+    return likelyhood_string
+
+
 def handle(text, mic, profile):
     filename = "Weather.CSV"
     weather_com_result = pywapi.get_weather_from_weather_com('NPXX0002')
     weather_status = weather_com_result['current_conditions']['text'] 
     weather_felttemp = weather_com_result['current_conditions']['feels_like']
     weather = "The weather conditions are "+weather_status+" with a felt temperature of "+ weather_felttemp+ " degrees Celsius. "
-    rainprop = rain(weather_com_result['forecasts'])
-    weather += rainprop
+    rainprop = rainchance(weather_com_result['forecasts'])
     text = '"' + weather_status + '"' + ',' + weather_felttemp + "Celsius" + ',"' + rainprop
     logdata(filename,text)
     if ("clothes" in text.lower()) or ("wear" in text.lower()):
@@ -93,8 +109,8 @@ def handle(text, mic, profile):
     elif ("hot" in text.lower()) or ("temperature" in text.lower()) or ("cold" in text.lower()):
         mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
     elif "rain" in text.lower():
-        rainprop = rain(weather_com_result['forecasts'])
-        #mic.say(rainprop)
+        rainprop = "Chance of" + rain(weather_com_result['forecasts'])
+        mic.say(rainprop)
 
     else :
     	mic.say(weather)
