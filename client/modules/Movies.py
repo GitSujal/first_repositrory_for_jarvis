@@ -1,4 +1,4 @@
-m# -*- coding: utf-8-*-
+# -*- coding: utf-8-*-
 import re
 from imdb import IMDb
 import os
