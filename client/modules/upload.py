@@ -28,11 +28,8 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database|update all)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	try:
-		filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
-		for file in filenames:
-			updatedatabase(file,profile)
-			mic.say("Database %s updated and closed successfully" %file)		
-	except:
-		mic.say("Sorry there is error with FTP")
+	filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
+	for file in filenames:
+		updatedatabase(file,profile)
+		mic.say("Database %s updated and closed successfully" %file)		
 	return	
