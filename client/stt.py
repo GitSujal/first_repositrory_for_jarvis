@@ -61,7 +61,7 @@ class AbstractSTTEngine(object):
     def transcribe(self, fp):
         pass
 
-
+'''
 class PocketSphinxSTT(AbstractSTTEngine):
     """
     The default Speech-to-Text implementation which relies on PocketSphinx.
@@ -179,7 +179,7 @@ class PocketSphinxSTT(AbstractSTTEngine):
 
 
 
-
+'''
 
 
 class WitAiSTT(AbstractSTTEngine):
