@@ -62,13 +62,13 @@ def rain(list):
     likelyhood = int(likelyhood_string)
 
     if (0 <= likelyhood) and (likelyhood<= 30):
-        string += "It should not rain , so don't bother taking an umbrella with you."
+        string += "It should not rain."
     elif (30 < likelyhood) and (likelyhood<= 50):
-        string += "Keep in mind though that there is a slight chance of rain today, so maybe take an umbrella with you, when you leave."
+        string += "There is a slight chance of rain today."
     elif(50< likelyhood) and (likelyhood <65):
-        string += "Keep in mind though that it's probably going to rain today, so taking an umbrella would be a smart idea."
+        string += "It's probably going to rain today"
     else:
-        string += "Keep in mind though that it's definitly going to rain today, so do take an umbrella."
+        string += "It's definitly going to rain today."
 
     return string
 
@@ -94,7 +94,7 @@ def handle(text, mic, profile):
         mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
     elif "rain" in text.lower():
         rainprop = rain(weather_com_result['forecasts'])
-        mic.say(rainprop)
+        #mic.say(rainprop)
 
     else :
     	mic.say(weather)
