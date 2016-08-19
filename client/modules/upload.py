@@ -30,7 +30,7 @@ def isValid(text):
 def handle(text,mic,profile):
 	filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
 	try:
-		for file in filenames
+		for file in filenames:
 			updatedatabase(file,profile)
 			mic.say("Database %s updated and closed successfully" %file)		
 	except:
