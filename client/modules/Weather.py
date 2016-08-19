@@ -78,7 +78,9 @@ def handle(text, mic, profile):
     weather_status = weather_com_result['current_conditions']['text'] 
     weather_felttemp = weather_com_result['current_conditions']['feels_like']
     weather = "The weather conditions are "+weather_status+" with a felt temperature of "+ weather_felttemp+ " degrees Celsius. "
-    text = '"' + weather_status + '"' + ',' + weather_felttemp + "Celsius"
+    rainprop = rain(weather_com_result['forecasts'])
+    weather += rainprop
+    text = '"' + weather_status + '"' + ',' + weather_felttemp + "Celsius" + ',"' + rainprop
     logdata(filename,text)
     if ("clothes" in text.lower()) or ("wear" in text.lower()):
         chance_rain = rain(weather_com_result['forecasts'])
