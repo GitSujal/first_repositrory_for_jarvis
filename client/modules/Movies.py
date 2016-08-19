@@ -3,6 +3,7 @@ import re
 from imdb import IMDb
 import os
 import datetime
+fileDir = os.path.dirname(os.path.realpath('__file__'))
 
 WORDS = ["MOVIE", "MOVIES", "YES","CINEMA","DRAMA"]
 
