@@ -31,8 +31,8 @@ def handle(text,mic,profile):
 	filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
 	try:
 		for file in filenames
-		updatedatabase(file,profile)
-		mic.say("Database %s updated and closed successfully" %file)	
+			updatedatabase(file,profile)
+			mic.say("Database %s updated and closed successfully" %file)		
 	except:
 		mic.say("Sorry there is error with FTP")
 	return	
