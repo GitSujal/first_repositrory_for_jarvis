@@ -3,12 +3,25 @@ import random
 import re
 from datetime import datetime
 import  pywapi
+import os
 
-
+fileDir = os.path.dirname(os.path.realpath('__file__'))
 WORDS = [""]
 
 PRIORITY = 4
 
+def logdata(filename,text):
+    date_string = datetime.datetime.now()
+    issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
+    filename = os.path.join(fileDir, '../Logs/'+filename)
+    filename = os.path.abspath(os.path.realpath(filename))
+    with open(filename, "a") as myfile:
+        print("Name of the file: ", myfile.name)
+        print("Opening mode : ", myfile.mode)
+        myfile.write('"' +text + '"' + ',' + issue_time + '\n')
+        myfile.close()
+        print("File Closed : ", myfile.closed)
+    return 
 
 def temperatureSuggestion(temp):
     
@@ -60,25 +73,26 @@ def rain(list):
     return string
 
 def handle(text, mic, profile):
-    
+    filename = "Weather.CSV"
     weather_com_result = pywapi.get_weather_from_weather_com('NPXX0002')
     weather_status = weather_com_result['current_conditions']['text'] 
     weather_felttemp = weather_com_result['current_conditions']['feels_like']
     weather = "The weather conditions are "+weather_status+" with a felt temperature of "+ weather_felttemp+ " degrees Celsius. "
-
+    text = '"' + weather_status + '"' + ',' + weather_felttemp + "Celsius"
     if ("clothes" in text.lower()) or ("wear" in text.lower()):
-
         chance_rain = rain(weather_com_result['forecasts'])
         felttemp_int = int(weather_felttemp)
         weather_suggestion = temperatureSuggestion(felttemp_int)
 
         weather_suggestion += chance_rain
-        
+        logdata(filename,text)
         mic.say(weather_suggestion)
 
     elif ("hot" in text.lower()) or ("temperature" in text.lower()) or ("cold" in text.lower()):
+    logdata(filename,text)
 	mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
     elif "rain" in text.lower():
+    logdata(filename,text)
 	rainprop = rain(weather_com_result['forecasts'])
 	mic.say(rainprop)
 

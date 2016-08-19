@@ -5,10 +5,28 @@ import wolframalpha
 import time
 import sys
 from sys import maxint
+import os
+import datetime
 
 from client import jasperpath
 WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD"]
 PRIORITY = 3
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+
+def logdata(filename,text):
+    date_string = datetime.datetime.now()
+    issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
+    filename = os.path.join(fileDir, '../Logs/'+filename)
+    filename = os.path.abspath(os.path.realpath(filename))
+    with open(filename, "a") as myfile:
+        print("Name of the file: ", myfile.name)
+        print("Opening mode : ", myfile.mode)
+        myfile.write('"' +text + '"' + ',' + issue_time + '\n')
+        myfile.close()
+        print("File Closed : ", myfile.closed)
+    return 
+
+
 
 def handle(text, mic, profile):
 
@@ -21,14 +39,19 @@ def handle(text, mic, profile):
 
     query = client.query(text)
     if len(query.pods) > 0:
+        filename = "Knowledge.CSV"
         texts = ""
         pod = query.pods[1]
         if pod.text:
+            text = text
             texts = pod.text
         else:
             texts = "I can not find anything"
+            text = ""
 
         mic.say(texts.replace("|",""))
+        logdata(filename,text)
+
     else:
         mic.say("Sorry, Could you be more specific?.")
 
