@@ -40,7 +40,7 @@ def temperatureSuggestion(temp):
     elif (25<=temp)and (temp<30):
         string = "It's very hot today. I'd suggest wearing the least amount of clothes you can. "
     elif 30 <= temp:
-        string = "It's blazing today. I'd go naked if I were you. "
+        string = "It's blazing today. I'd not to outside if I were you. "
 
     string +=". "
     return string
@@ -79,20 +79,18 @@ def handle(text, mic, profile):
     weather_felttemp = weather_com_result['current_conditions']['feels_like']
     weather = "The weather conditions are "+weather_status+" with a felt temperature of "+ weather_felttemp+ " degrees Celsius. "
     text = '"' + weather_status + '"' + ',' + weather_felttemp + "Celsius"
+    logdata(filename,text)
     if ("clothes" in text.lower()) or ("wear" in text.lower()):
         chance_rain = rain(weather_com_result['forecasts'])
         felttemp_int = int(weather_felttemp)
         weather_suggestion = temperatureSuggestion(felttemp_int)
-
         weather_suggestion += chance_rain
-        logdata(filename,text)
+        
         mic.say(weather_suggestion)
 
     elif ("hot" in text.lower()) or ("temperature" in text.lower()) or ("cold" in text.lower()):
-        logdata(filename,text)
         mic.say("There's currently a felt temperature of "+weather_felttemp+" degrees Celsius.")	
     elif "rain" in text.lower():
-        logdata(filename,text)
         rainprop = rain(weather_com_result['forecasts'])
         mic.say(rainprop)
 
