@@ -47,17 +47,24 @@ def handle(text, mic, profile):
         if yes(response):
             ia.update(movie)
             filename = "Movie.CSV"
-            #text = '"'+ '%s' +'"' + ',' + '"' + '%s' + '"' +'%s' %(movie.get('title'),movie.get('cast'),movie.get('genres'))
-            movie_info = '%s (%s).  ' %(movie.get('title'), movie.get('year'))
-            if movie.get('rating'): movie_info += 'Rating.  %s out of 10.  ' %movie.get('rating')
-            if movie.get('runtimes'): movie_info += 'Runtime.  %s minutes.  ' %movie.get('runtimes')[0]
-            if movie.get('genres'): movie_info += 'Genres.  %s.  ' %'.  '.join(movie.get('genres'))
-            if movie.get('plot outline'): movie_info += 'Plot.  %s  ' %movie.get('plot outline')
-            if movie.get('director'): movie_info += 'Directors.  %s.  ' %format_names(movie.get('director'))
-            if movie.get('producer'): movie_info += 'Producers.  %s.  ' %format_names(movie.get('producer'))
-            if movie.get('cast'): movie_info += 'Cast.  %s.  ' %format_names(movie.get('cast'))
+            text = '%s' %movie.get('title')
+            if movie.get('rating'): 
+                movie_info += 'Rating.  %s out of 10.  ' %movie.get('rating')
+            if movie.get('runtimes'): 
+                movie_info += 'Runtime.  %s minutes.  ' %movie.get('runtimes')[0]
+            if movie.get('genres'): 
+                movie_info += 'Genres.  %s.  ' %'.  '.join(movie.get('genres'))
+                text += ',"' + '%s' %'.  '.join(movie.get('genres')) + '"'
+            if movie.get('plot outline'): 
+                movie_info += 'Plot.  %s  ' %movie.get('plot outline')
+            if movie.get('director'): 
+                movie_info += 'Directors.  %s.  ' %format_names(movie.get('director'))
+            if movie.get('producer'): 
+                movie_info += 'Producers.  %s.  ' %format_names(movie.get('producer'))
+            if movie.get('cast'): 
+                movie_info += 'Cast.  %s.  ' %format_names(movie.get('cast'))
+                text+= ',"'+ '%s' %format_names(movie.get('cast') +'"'
             mic.say(movie_info)
-            text = movie_info
             logdata(filename,text)
             return
     mic.say('Unable to find information on the requested movie')
