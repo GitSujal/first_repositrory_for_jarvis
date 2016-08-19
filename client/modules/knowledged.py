@@ -10,7 +10,7 @@ import datetime
 
 from client import jasperpath
 WORDS = ["WHO", "WHAT", "HOW MUCH", "HOW MANY", "HOW OLD"]
-PRIORITY = 3
+PRIORITY = 1
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 
 def logdata(filename,text):

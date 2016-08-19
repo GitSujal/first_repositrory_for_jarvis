@@ -4,7 +4,7 @@ import re
 from urllib2 import Request, urlopen, URLError
 import json
 
-WORDS = ["WIKI", "WICKY","ARTICLE"]
+WORDS = ["WIKI", "WICKY","ARTICLE","WIKIPEDIA"]
 
 PRIORITY = 1
 
@@ -32,10 +32,10 @@ def get_wiki(text,mic):
 
 
 def isValid(text):
-    wiki= bool(re.search(r'\Wiki\b',text, re.IGNORECASE))
+    wiki= bool(re.search(r'\b(Wiki|wikipedia)\b',text, re.IGNORECASE))
     # Add 'Wicky' because the STT engine recognizes it quite often
-    wicky= bool(re.search(r'\wicky\b',text, re.IGNORECASE))
-    article= bool(re.search(r'\article\b',text, re.IGNORECASE))
+    wicky= bool(re.search(r'\b(wicky|wiky)\b',text, re.IGNORECASE))
+    article= bool(re.search(r'\b(article| article on)\b',text, re.IGNORECASE))
 
     if wicky or wiki or article:
         return True

@@ -5,6 +5,7 @@ from client.app_utils import getTimezone
 from semantic.dates import DateService
 
 WORDS = ["TIME"]
+PRIORITY = 3
 
 
 def handle(text, mic, profile):

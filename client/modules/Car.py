@@ -3,7 +3,7 @@ import bluetooth
 from time import sleep
 i = int(0)
 bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
-port = 1
+port = 2
 s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
