@@ -64,7 +64,7 @@ def handle(text, mic, profile):
             if movie.get('cast'): 
                 movie_info += 'Cast.  %s.  ' %format_names(movie.get('cast'))
                 text+= ',"'+ '%s' %format_names(movie.get('cast') +'"'
-            logdata(filename,text)
-            mic.say(movie_info)
+        logdata(filename,text)
+        mic.say(movie_info)
         return
     mic.say('Unable to find information on the requested movie')
