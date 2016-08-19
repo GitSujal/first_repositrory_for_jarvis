@@ -23,7 +23,7 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	filename = "Missed_Commands.txt"
+	filename = "Missed_Commands.CSV"
 	updatedatabase(filename)
 	mic.say("Database updated and closed successfully")	
 	return	
