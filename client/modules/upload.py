@@ -14,7 +14,8 @@ def updatedatabase(filename,profile):
 		ftp = ftplib.FTP('ftp.offerharu.com')
 		ftp.login('jarvisai',ftp_pwd)
 		ftp.cwd('Data')
-		myfile = open('/home/pi/Logs/Missed_Commands.txt','rb')
+		fileext = "/home/pi/Logs/"+ filename
+		myfile = open(fileext,'rb')
 		ftp.storlines('STOR ' + filename , myfile)
 	else :
 		print("FTP password missing in profiel addd it under ftp_pwd:")
@@ -27,10 +28,11 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database|update all)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	filename = "Missed_Commands.CSV"
+	filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
 	try:
-		updatedatabase(filename)
-		mic.say("Database updated and closed successfully")	
+		for file in filenames
+		updatedatabase(file,profile)
+		mic.say("Database %s updated and closed successfully" %file)	
 	except:
 		mic.say("Sorry there is error with FTP")
 	return	
