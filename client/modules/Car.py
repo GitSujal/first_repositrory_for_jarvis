@@ -69,9 +69,12 @@ def isValid(text):
  
 
 def handle(text,mic,profile):
-	s.connect((bd_addr, port))
-	print "conected to "+ bd_addr
-	mic.say("I'm controlling selfie-bot now give me directions")
-	carcontrol(mic)
+	try:
+		s.connect((bd_addr, port))
+		print "conected to "+ bd_addr
+		mic.say("I'm controlling selfie-bot now give me directions")
+		carcontrol(mic)
+	except:
+		mic.say("Problem connecting Bluetooth")
 	return	
 
