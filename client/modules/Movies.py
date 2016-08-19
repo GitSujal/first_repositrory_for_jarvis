@@ -47,7 +47,7 @@ def handle(text, mic, profile):
         if yes(response):
             ia.update(movie)
             filename = "Movie.CSV"
-            text = '"'+ '%s' +'"' + ',' + '"' + '%s' + '"' +'%s' %(movie.get('title'),movie.get('cast'),movie.get('genres'))
+            #text = '"'+ '%s' +'"' + ',' + '"' + '%s' + '"' +'%s' %(movie.get('title'),movie.get('cast'),movie.get('genres'))
             movie_info = '%s (%s).  ' %(movie.get('title'), movie.get('year'))
             if movie.get('rating'): movie_info += 'Rating.  %s out of 10.  ' %movie.get('rating')
             if movie.get('runtimes'): movie_info += 'Runtime.  %s minutes.  ' %movie.get('runtimes')[0]
@@ -57,6 +57,7 @@ def handle(text, mic, profile):
             if movie.get('producer'): movie_info += 'Producers.  %s.  ' %format_names(movie.get('producer'))
             if movie.get('cast'): movie_info += 'Cast.  %s.  ' %format_names(movie.get('cast'))
             mic.say(movie_info)
+            text = movie_info
             logdata(filename,text)
             return
     mic.say('Unable to find information on the requested movie')
