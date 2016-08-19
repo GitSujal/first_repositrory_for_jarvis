@@ -52,6 +52,6 @@ def handle(text, mic, profile):
 	os.system("pkill -f jasper.py")
 
 def isValid(text):
-    return bool(re.search(r'\b((restart|reboot|shut) (yourself|up))\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b((restart|reboot|shut|shutdown) (computer|jarvis||down|yourself|up))\b', text, re.IGNORECASE))
 
 
