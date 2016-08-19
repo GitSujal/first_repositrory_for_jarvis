@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     print("*******************************************************")
     print("*             JARVIS - THE INTELLIGENT COMPUTER       *")
-    print("* (c) 2016 SUJAL DHUNGANGAN AND CO................... *")
+    print("* (c) 2016 SUJAL DHUNGANA AND CO................... *")
     print("*******************************************************")
 
     logging.basicConfig()
