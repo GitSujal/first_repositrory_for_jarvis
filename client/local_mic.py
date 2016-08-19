@@ -17,6 +17,7 @@ class Mic:
     prev = None
 
     def __init__(self, speaker, passive_stt_engine, active_stt_engine):
+        self.speaker = speaker
         return
 
     def passiveListen(self, PERSONA):
