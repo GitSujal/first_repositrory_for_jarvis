@@ -1,8 +1,10 @@
 # -*- coding: utf-8-*-
 import re
 from imdb import IMDb
+import os
+import datetime
 
-WORDS = ["MOVIE", "MOVIES", "YES"]
+WORDS = ["MOVIE", "MOVIES", "YES","CINEMA","DRAMA"]
 
 def format_names(people):
     del people[5:] # Max of 5 people listed
@@ -15,13 +17,21 @@ def yes(text):
     return bool(re.search(r'\b(yes)\b', text, re.IGNORECASE))
 
 def isValid(text):
-    """
-        Returns True if the text is related to Jasper's status.
+    return bool(re.search(r'\b(movie|movies|cinema|Drama)\b', text, re.IGNORECASE))
 
-        Arguments:
-        text -- user-input, typically transcribed speech
-    """
-    return bool(re.search(r'\b(movie|movies)\b', text, re.IGNORECASE))
+def logdata(filename,text):
+    date_string = datetime.datetime.now()
+    issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
+    filename = os.path.join(fileDir, '../Logs/'+filename)
+    filename = os.path.abspath(os.path.realpath(filename))
+    with open(filename, "a") as myfile:
+        print("Name of the file: ", myfile.name)
+        print("Opening mode : ", myfile.mode)
+        myfile.write('"' +text + '"' + ',' + issue_time + '\n')
+        myfile.close()
+        print("File Closed : ", myfile.closed)
+    return 
+
 
 def handle(text, mic, profile):
     mic.say('What movie?')
@@ -35,6 +45,8 @@ def handle(text, mic, profile):
         response = mic.activeListen()
         if yes(response):
             ia.update(movie)
+            filename = "Movie.CSV"
+            text = movie
             movie_info = '%s (%s).  ' %(movie.get('title'), movie.get('year'))
             if movie.get('rating'): movie_info += 'Rating.  %s out of 10.  ' %movie.get('rating')
             if movie.get('runtimes'): movie_info += 'Runtime.  %s minutes.  ' %movie.get('runtimes')[0]
@@ -44,5 +56,6 @@ def handle(text, mic, profile):
             if movie.get('producer'): movie_info += 'Producers.  %s.  ' %format_names(movie.get('producer'))
             if movie.get('cast'): movie_info += 'Cast.  %s.  ' %format_names(movie.get('cast'))
             mic.say(movie_info)
+            logdata(filename,text)
             return
     mic.say('Unable to find information on the requested movie')
