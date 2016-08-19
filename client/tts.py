@@ -128,7 +128,7 @@ class DummyTTS(AbstractTTSEngine):
         self._logger.debug("Playback of file '%s' requested")
         pass
 
-
+"""
 class EspeakTTS(AbstractTTSEngine):
     """
     Uses the eSpeak speech synthesizer included in the Jasper disk image
@@ -416,7 +416,7 @@ class PicoTTS(AbstractTTSEngine):
         self.play(fname)
         os.remove(fname)
 
-
+"""
 class GoogleTTS(AbstractMp3TTSEngine):
     """
     Uses the Google TTS online translator
@@ -472,7 +472,7 @@ class GoogleTTS(AbstractMp3TTSEngine):
         self.play_mp3(tmpfile)
         os.remove(tmpfile)
 
-
+"""
 class MaryTTS(AbstractTTSEngine):
     """
     Uses the MARY Text-to-Speech System (MaryTTS)
@@ -567,7 +567,7 @@ class MaryTTS(AbstractTTSEngine):
         self.play(tmpfile)
         os.remove(tmpfile)
 
-
+"""
 class IvonaTTS(AbstractMp3TTSEngine):
     """
     Uses the Ivona Speech Cloud Services.

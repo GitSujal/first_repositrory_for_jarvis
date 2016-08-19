@@ -7,7 +7,7 @@ WORDS = []
 
 PRIORITY = 6
 def handle(text, mic, profile):
-	output = text.replace("SAY","")
+	output = text.replace("say","")
 	mic.say(output)
 
 
