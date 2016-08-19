@@ -25,7 +25,7 @@ def logdata(filename,text):
 
 
 def handle(text, mic, profile):
-    filename = "Missed_Commands.txt"
+    filename = "Missed_Commands.CSV"
     messages = ["I'm sorry, could you repeat that?",
                 "My apologies, could you try saying that again?",
                 "Say that again?", "I beg your pardon?","Sorry I miss this command I would upload this request and hope next time you'll get execution for this command","Sorry Try any other command"]
