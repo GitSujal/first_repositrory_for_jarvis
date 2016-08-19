@@ -7,7 +7,7 @@ PRIORITY = 1
 
 def handle(text, mic, profile):
 
-    messages = ["यहाँ कुछ संगीत है","बस सुनो"]
+    messages = ["Here is some music","Sure song here is one","of course","Naturally sir"]
 
     message = random.choice(messages)
 
