@@ -11,7 +11,7 @@ WORDS = [""]
 PRIORITY = 4
 
 def logdata(filename,text):
-    date_string = datetime.datetime.now()
+    date_string = datetime.now()
     issue_time = str(date_string.year) +'-' + str(date_string.month) +'-' + str(date_string.day) +','+ str(date_string.hour) +':'+ str(date_string.minute) +':'+ str(date_string.second)
     filename = os.path.join(fileDir, '../Logs/'+filename)
     filename = os.path.abspath(os.path.realpath(filename))
