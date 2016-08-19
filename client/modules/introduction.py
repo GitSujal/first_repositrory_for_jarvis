@@ -11,6 +11,6 @@ def handle(text, mic,profile):
 	return
 
 def isValid(text):
-	return bool(re.search(r'\b(introduction)\b', text, re.IGNORECASE))
+	return bool(re.search(r'\b(introduction| who are you | tell me about yourself |introduce |introduce yourself)\b', text, re.IGNORECASE))
 
 
