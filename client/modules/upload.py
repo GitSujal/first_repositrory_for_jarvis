@@ -12,6 +12,7 @@ def updatedatabase(filename,profile):
 	if 'ftp_pwd' in profile:
 		ftp_pwd = profile['ftp_pwd']
 		ftp = ftplib.FTP('ftp.offerharu.com')
+		print(ftp_pwd)
 		ftp.login('jarvisai',ftp_pwd)
 		ftp.cwd('Data')
 		fileext = "/home/pi/Logs/"+ filename
