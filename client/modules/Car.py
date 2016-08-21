@@ -36,25 +36,32 @@ def carcontrol(mic):
 
 
 def handledirection(mic,Direction):
-	if Direction ==  "left":
+	if Direction ==  "left" | "LEFT"
 		transimitmessage = Serial_message[1]
 		s.send(transimitmessage)
 		
-
-	elif Direction == "right":
+	elif Direction == "right" | "RIGHT"|
 		print "conected to "+ bd_addr
 		transimitmessage = Serial_message[2]
 		s.send(transimitmessage)
 	
-	elif Direction == "AHEAD":# | "ahead" |"FORWARD" | "forward":
+	elif Direction == "AHEAD"  | "ahead" | "FORWARD" | "forward":
 		transimitmessage = Serial_message[3]
 		s.send(transimitmessage)
 	
-	elif Direction == "back":# | "BACK" | "BACKWARD" |"backward":
+	elif Direction == "back" | "BACK" | "BACKWARD" |"backward":
 		transimitmessage = Serial_message[4]
 		s.send(transimitmessage)
-	elif Direction == "off":# | "BACK" | "BACKWARD" |"backward":
+	elif Direction == "camera right" | "CAMERA RIGHT"
+		transimitmessage = Serial_message[5]
+		s.send(transimitmessage)
+	elif Direction == "camera right" | "CAMERA RIGHT"
+		transimitmessage = Serial_message[6]
+		s.send(transimitmessage)	
+	elif Direction == "off" | "STOP" |"stop":
 		s.send('z')	
+	elif Direction == "take selfie" |	"now" | "NOW" | "take selfie" | "TAKE SELFIE"
+		takeselfie();
 	return
 
 def takeselfie():
