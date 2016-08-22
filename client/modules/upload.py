@@ -11,7 +11,6 @@ PRIORITY = 1
 def updatedatabase(filename,profile):
 	if 'ftp_pwd' in profile:
 		ftp_pwd = profile['ftp_pwd']
-		print(ftp_pwd)
 		ftp = ftplib.FTP('ftp.offerharu.com')
 		ftp.login('jarvisai',ftp_pwd)
 		ftp.cwd('Data')
@@ -19,7 +18,7 @@ def updatedatabase(filename,profile):
 		myfile = open(fileext,'rb')
 		ftp.storlines('STOR ' + filename , myfile)
 	else :
-		print("FTP password missing in profiel addd it under ftp_pwd:")
+		print("FTP password missing in profile addd it under ftp_pwd:")
 	ftp.quit()
 	return
 
@@ -29,8 +28,11 @@ def isValid(text):
     return bool(re.search(r'\b(UPDATE|upload|Database|update all)\b', text, re.IGNORECASE))
  
 def handle(text,mic,profile):
-	filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
-	for file in filenames:
-		updatedatabase(file,profile)
-		mic.say("Database %s updated and closed successfully" %file)		
+	try:
+		filenames = ["Missed_Commands.CSV", "Knowledge.CSV", "Movie.CSV","Weather.CSV"]
+		for file in filenames:
+			updatedatabase(file,profile)
+			mic.say("Database %s updated and closed successfully" %file)		
+	except:
+		mic.say("Error using FTP. ")
 	return	
