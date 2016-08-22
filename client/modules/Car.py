@@ -34,7 +34,7 @@ def carcontrol(mic):
 
 def handledirection(mic,Direction):
 	if "left" in Direction.lower():
-		if "cam left" in Direction.lower():
+		if "cam left"  | "damn left" in Direction.lower():
 			transimitmessage = Serial_message[7]
 			s.send(transimitmessage)
 		else:	
@@ -43,7 +43,7 @@ def handledirection(mic,Direction):
 
 		
 	elif "right" in Direction.lower():
-		if "cam right" in Direction.lower():
+		if "cam right" | "damn right" in Direction.lower():
 			transimitmessage = Serial_message[5]
 			s.send(transimitmessage)
 		else:
@@ -51,7 +51,7 @@ def handledirection(mic,Direction):
 			s.send(transimitmessage)
 
 	elif "front" in Direction.lower():
-		 if  "cam front"in Direction.lower():
+		 if  "cam front" | "damn front" in Direction.lower():
 			transimitmessage = Serial_message[6]
 			s.send(transimitmessage)	
 		 else:
