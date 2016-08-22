@@ -22,7 +22,7 @@ selfie = ["take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
 def carcontrol(mic):
 	Direction = mic.activeListen()
 	#if Direction in ValidDirection:
-	if bool(re.search(r'\b(ValidDirection)\b', direction, re.IGNORECASE))
+	if bool(re.search(r'\b(ValidDirection)\b', direction, re.IGNORECASE)):
 		handledirection(mic,Direction)
 		mic.say("I'm going %s " %Direction)
 		carcontrol(mic)
