@@ -67,6 +67,7 @@ def handledirection(mic,Direction):
 		
 	elif "selfie" in Direction.lower():
 		takeselfie(mic);
+		return
 	return
 
 def takeselfie(mic):
