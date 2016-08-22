@@ -9,7 +9,7 @@ s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
 PRIORITY = 1
 
-ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","left","right","forward","backward","ahead","back","off","OFF","stop","STOP","HALT","halt","there","off","reverse","cam right","camera right","rotate right","cam left","camera left","rotate left","take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
+ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","front","left","right","forward","backward","ahead","back","off","OFF","stop","STOP","HALT","halt","there","off","reverse","cam right","camera right","rotate right","cam left","camera left","rotate left","take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
 ValidStop = ["stop","STOP","HALT","halt","there","off"]
 Serial_message = ['z','a','b','c','d','e','f','g']
 ahead = ["ahead","front","forward"]
@@ -57,10 +57,10 @@ def handledirection(mic,Direction):
 	elif Direction in ValidStop:
 		s.send('z')	
 	elif Direction in selfie:
-		takeselfie();
+		takeselfie(mic);
 	return
 
-def takeselfie():
+def takeselfie(mic):
 	mic.say("Taking selfie smile")
 	return
 

@@ -21,7 +21,7 @@ def logdata(filename,text):
     with open(filename, "a") as myfile:
         print("Name of the file: ", myfile.name)
         print("Opening mode : ", myfile.mode)
-        myfile.write('"' +text + '"' + ',' + issue_time + '\n')
+        myfile.write('"' +text + '"' + ',' + issue_time )
         myfile.close()
         print("File Closed : ", myfile.closed)
     return 
