@@ -34,27 +34,31 @@ def carcontrol(mic):
 
 def handledirection(mic,Direction):
 	if "left" in Direction.lower():
-		transimitmessage = Serial_message[1]
+		if "cam left" in Direction.lower():
+		transimitmessage = Serial_message[7]
 		s.send(transimitmessage)
+		else:	
+			transimitmessage = Serial_message[1]
+			s.send(transimitmessage)
+
 		
 	elif "right" in Direction.lower():
-		transimitmessage = Serial_message[2]
-		s.send(transimitmessage)
+		if "cam right" in Direction.lower():
+			transimitmessage = Serial_message[5]
+			s.send(transimitmessage)
+		else:
+			 transimitmessage = Serial_message[2]
+			s.send(transimitmessage)
 	elif "ahead" in Direction.lower():
+		 if  "cam front"in Direction.lower():
+			transimitmessage = Serial_message[6]
+			s.send(transimitmessage)	
+		else:
 			transimitmessage = Serial_message[4]
 			s.send(transimitmessage)
 	elif "back" in Direction.lower():
 			transimitmessage = Serial_message[3]
 			s.send(transimitmessage)
-	elif "cam right" in Direction.lower():
-			transimitmessage = Serial_message[5]
-			s.send(transimitmessage)
-	elif  "cam front"in Direction.lower():
-		transimitmessage = Serial_message[6]
-		s.send(transimitmessage)
-	elif "camleft" in Direction.lower():
-		transimitmessage = Serial_message[7]
-		s.send(transimitmessage)
 	elif Direction in ValidStop:
 		s.send('z')	
 	elif "selfie" in Direction.lower():
