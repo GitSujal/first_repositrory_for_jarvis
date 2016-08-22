@@ -47,7 +47,7 @@ def handledirection(mic,Direction):
 			transimitmessage = Serial_message[5]
 			s.send(transimitmessage)
 		else:
-			 transimitmessage = Serial_message[2]
+			transimitmessage = Serial_message[2]
 			s.send(transimitmessage)
 	elif "ahead" in Direction.lower():
 		 if  "cam front"in Direction.lower():
