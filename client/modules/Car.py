@@ -6,7 +6,7 @@ bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the se
 port = 1
 s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
-WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
+WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","TAKE PICTURE","TAKE PHOTO","Selfie","Selfie bot","HARDWARE","CONTROL"]
 PRIORITY = 1
 
 ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","front","cam front","camera front","rotate front","left","right","forward","backward","ahead","back","off","OFF","stop","STOP","HALT","halt","there","off","reverse","cam right","camera right","rotate right","cam left","camera left","rotate left","take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
@@ -72,7 +72,7 @@ def takeselfie(mic):
 
 def isValid(text):
 	#TO know the input is for Selfie-Bot
-    return bool(re.search(r'\b(CAR|Selfie|Camera | Control | hardware |picture | take photo)\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b(CAR|Selfie|Camera | control| hardware |picture | take photo)\b', text, re.IGNORECASE))
  
 
 def handle(text,mic,profile):
