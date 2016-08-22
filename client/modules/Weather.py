@@ -18,7 +18,7 @@ def logdata(filename,text):
     with open(filename, "a") as myfile:
         print("Name of the file: ", myfile.name)
         print("Opening mode : ", myfile.mode)
-        myfile.write('"' +text + '"' + ',' + issue_time + '\n')
+        myfile.write( +text  + ',' + issue_time + '\n')
         myfile.close()
         print("File Closed : ", myfile.closed)
     return 
@@ -96,7 +96,7 @@ def handle(text, mic, profile):
     weather_felttemp = weather_com_result['current_conditions']['feels_like']
     weather = "The weather conditions are "+weather_status+" with a felt temperature of "+ weather_felttemp+ " degrees Celsius. "
     rainprop = rainchance(weather_com_result['forecasts'])
-    text =  '"' + weather_status + '"' + ',"' +weather_felttemp + " Celsius" + '"' + ',"' + rainprop +'"'
+    text =  '"' + weather_status + '"' + ',"' +weather_felttemp + "Celsius" + '"' + ',"' + rainprop +'"'
     logdata(filename,text)
     if ("clothes" in text.lower()) or ("wear" in text.lower()):
         chance_rain = rain(weather_com_result['forecasts'])
