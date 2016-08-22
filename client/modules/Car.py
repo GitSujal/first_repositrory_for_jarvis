@@ -6,7 +6,7 @@ bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the se
 port = 1
 s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
-WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","SELFIE","TAKE PICTURE","TAKE PHOTO","HARDWARE","CONTROL"]
+WORDS = ["CAR","SELFIE","TAKE PICTURE","TAKE PHOTO","HARDWARE","CONTROL"]
 PRIORITY = 5
 
 ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","FRONT","CAM FRONT","cCAMERA FRONT","ROTATE FRONT", "OFF","STOP","HALT","REVERSE","CAM RIGHT","CAMERA RIGHT","ROTATE LEFT","CAM LEFT","CAMERA LEFT","ROTATE LEFT","TAKE SELFIE","NOW","PHOTO","TAKE PICTURE","TAKE SELFIE"]
@@ -34,7 +34,7 @@ def carcontrol(mic):
 
 def handledirection(mic,Direction):
 	if "left" in Direction.lower():
-		if "cam left"  | "damn left" in Direction.lower():
+		if "cam left"  in Direction.lower():
 			transimitmessage = Serial_message[7]
 			s.send(transimitmessage)
 		else:	
@@ -43,7 +43,7 @@ def handledirection(mic,Direction):
 
 		
 	elif "right" in Direction.lower():
-		if "cam right" | "damn right" in Direction.lower():
+		if "cam right" in Direction.lower():
 			transimitmessage = Serial_message[5]
 			s.send(transimitmessage)
 		else:
@@ -51,7 +51,7 @@ def handledirection(mic,Direction):
 			s.send(transimitmessage)
 
 	elif "front" in Direction.lower():
-		 if  "cam front" | "damn front" in Direction.lower():
+		 if  "cam front" in Direction.lower():
 			transimitmessage = Serial_message[6]
 			s.send(transimitmessage)	
 		 else:
