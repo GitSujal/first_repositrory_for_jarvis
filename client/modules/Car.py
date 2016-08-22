@@ -72,7 +72,7 @@ def takeselfie(mic):
 
 def isValid(text):
 	#TO know the input is for Selfie-Bot
-    return bool(re.search(r'\b(CAR|Selfie|Camera)\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b(CAR|Selfie|Camera | Control | hardware |picture | take photo)\b', text, re.IGNORECASE))
  
 
 def handle(text,mic,profile):
