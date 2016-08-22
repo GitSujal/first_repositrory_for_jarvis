@@ -6,7 +6,7 @@ bd_addr = '30:14:10:27:11:99' # The MAC address of a Bluetooth adapter on the se
 port = 1
 s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 
-WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","TAKE PICTURE","TAKE PHOTO","Selfie","Selfie bot","HARDWARE","CONTROL"]
+WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","TAKE PICTURE","TAKE PHOTO","HARDWARE","CONTROL"]
 PRIORITY = 1
 
 ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","FRONT","CAM FRONT","cCAMERA FRONT","ROTATE FRONT", "OFF","STOP","HALT","REVERSE","CAM RIGHT","CAMERA RIGHT","ROTATE LEFT","CAM LEFT","CAMERA LEFT","ROTATE LEFT","TAKE SELFIE","NOW","PHOTO","TAKE PICTURE","TAKE SELFIE"]
@@ -69,14 +69,16 @@ def takeselfie(mic):
 
 def isValid(text):
 	#TO know the input is for Selfie-Bot
-    return bool(re.search(r'\b(CAR|Selfie|Camera | control| hardware |picture | take photo)\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b(CAR|Selfie|Camera | CONTROL | HARDWARE |picture | take photo)\b', text, re.IGNORECASE))
  
 
 def handle(text,mic,profile):
-	s.connect((bd_addr, port))
-	print "conected to "+ bd_addr
-	mic.say("I'm controlling selfie-bot now give me directions")
-	carcontrol(mic)
-	
+	try:
+		s.connect((bd_addr, port))
+		print "conected to "+ bd_addr
+		mic.say("I'm controlling selfie-bot now give me directions")
+		carcontrol(mic)
+	except:
+		mic.say("error connecting bluetooth")
 	return	
 
