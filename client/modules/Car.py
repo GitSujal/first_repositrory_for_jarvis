@@ -16,6 +16,7 @@ ahead = ["ahead","front","forward"]
 back = ["back","backward","reverse"]
 camright = ["cam right","camera right","rotate right"]
 camleft = ["cam left","camera left","rotate left"]
+camfront = ["cam front","camera front","rotate front"]
 selfie = ["take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
 
 def carcontrol(mic):
@@ -51,9 +52,12 @@ def handledirection(mic,Direction):
 	elif Direction in camright:
 		transimitmessage = Serial_message[5]
 		s.send(transimitmessage)
-	elif Direction in camleft:
+	elif Direction in camfront:
 		transimitmessage = Serial_message[6]
-		s.send(transimitmessage)	
+		s.send(transimitmessage)
+	elif Direction in camleft:
+		transimitmessage = Serial_message[7]
+		s.send(transimitmessage)
 	elif Direction in ValidStop:
 		s.send('z')	
 	elif Direction in selfie:
