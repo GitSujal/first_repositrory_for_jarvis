@@ -42,11 +42,11 @@ def handledirection(mic,Direction):
 		s.send(transimitmessage)
 	
 	elif Direction in ahead:
-		transimitmessage = Serial_message[3]
+		transimitmessage = Serial_message[4]
 		s.send(transimitmessage)
 	
 	elif Direction in back:
-		transimitmessage = Serial_message[4]
+		transimitmessage = Serial_message[3]
 		s.send(transimitmessage)
 	elif Direction in camright:
 		transimitmessage = Serial_message[5]
