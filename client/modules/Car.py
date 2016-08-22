@@ -35,8 +35,8 @@ def carcontrol(mic):
 def handledirection(mic,Direction):
 	if "left" in Direction.lower():
 		if "cam left" in Direction.lower():
-		transimitmessage = Serial_message[7]
-		s.send(transimitmessage)
+			transimitmessage = Serial_message[7]
+			s.send(transimitmessage)
 		else:	
 			transimitmessage = Serial_message[1]
 			s.send(transimitmessage)
