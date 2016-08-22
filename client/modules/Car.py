@@ -9,7 +9,7 @@ s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","TAKE PICTURE","TAKE PHOTO","Selfie","Selfie bot","HARDWARE","CONTROL"]
 PRIORITY = 1
 
-ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","front","cam front","camera front","rotate front","left","right","forward","backward","ahead","back","off","OFF","stop","STOP","HALT","halt","there","off","reverse","cam right","camera right","rotate right","cam left","camera left","rotate left","take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
+ValidDirection = ["LEFT" |"RIGHT" |"FORWARD" |"BACKWARD" | "AHEAD" | "BACK" | "front" | "cam front" | "camera front" | "rotate front" | "left" | "right" | "forward" | "backward" | "ahead" | "back" | "OFF" |"STOP" | "HALT" | "halt" | "there" | "off" | "reverse" | "cam right" | "camera right" | "rotate right" | "cam left" | "camera left" | "rotate left" | "take selfie"  | "now"  | "photo" | "take picture" | "TAKE SELFIE"]
 ValidStop = ["stop","STOP","HALT","halt","there","off"]
 Serial_message = ['z','a','b','c','d','e','f','g']
 ahead = ["ahead","front","forward"]
@@ -21,7 +21,8 @@ selfie = ["take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
 
 def carcontrol(mic):
 	Direction = mic.activeListen()
-	if Direction in ValidDirection:
+	#if Direction in ValidDirection:
+	if bool(re.search(r'\b(ValidDirection)\b', direction, re.IGNORECASE))
 		handledirection(mic,Direction)
 		mic.say("I'm going %s " %Direction)
 		carcontrol(mic)
@@ -33,12 +34,11 @@ def carcontrol(mic):
 
 
 def handledirection(mic,Direction):
-	if Direction ==  "left":
+	if "LEFT" in Direction:
 		transimitmessage = Serial_message[1]
 		s.send(transimitmessage)
 		
-	elif Direction == "right":
-		print "conected to "+ bd_addr
+	elif "RIGHT" in Direction:
 		transimitmessage = Serial_message[2]
 		s.send(transimitmessage)
 	
