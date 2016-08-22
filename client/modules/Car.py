@@ -9,9 +9,14 @@ s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 WORDS = ["CAR","RIGHT","LEFT","FORWARD","AHEAD","BACK","BACKWARD","Selfie","Selfie bot","Camera","YES"]
 PRIORITY = 1
 
-ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","left","right","forward","backward","ahead","back","off","OFF"]
-ValidStop = ["stop","STOP","HALT","halt","there"]
+ValidDirection = ["LEFT","RIGHT","FORWARD","BACKWARD","AHEAD","BACK","left","right","forward","backward","ahead","back","off","OFF","stop","STOP","HALT","halt","there","off","reverse","cam right","camera right","rotate right","cam left","camera left","rotate left","take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
+ValidStop = ["stop","STOP","HALT","halt","there","off"]
 Serial_message = ['z','a','b','c','d','e','f','g']
+ahead = ["ahead","front","forward"]
+back = ["back","backward","reverse"]
+camright = ["cam right","camera right","rotate right"]
+camleft = ["cam left","camera left","rotate left"]
+selfie = ["take selfie" ,"now" ,"photo","take picture", "TAKE SELFIE"]
 
 def carcontrol(mic):
 	Direction = mic.activeListen()
@@ -19,16 +24,7 @@ def carcontrol(mic):
 		handledirection(mic,Direction)
 		mic.say("I'm going %s " %Direction)
 		carcontrol(mic)
-		'''	stop = mic.activeListen()
-		if stop in ValidStop:
-			mic.say("I'm in position now would you like  a selfie")
-			permission = mic.activeListen()
-			if permission == "yes" | "YES" | "ok" | "OK":
-				takeselfie(mic)
-			else:
-				return 
-		else: 
-			carcontrol(mic) '''
+
 	else:
 		mic.say("That's not a valid direction")
 		carcontrol(mic)
@@ -36,31 +32,31 @@ def carcontrol(mic):
 
 
 def handledirection(mic,Direction):
-	if Direction ==  "left" | "LEFT"
+	if Direction ==  "left":
 		transimitmessage = Serial_message[1]
 		s.send(transimitmessage)
 		
-	elif Direction == "right" | "RIGHT"|
+	elif Direction == "right":
 		print "conected to "+ bd_addr
 		transimitmessage = Serial_message[2]
 		s.send(transimitmessage)
 	
-	elif Direction == "AHEAD"  | "ahead" | "FORWARD" | "forward":
+	elif Direction in ahead:
 		transimitmessage = Serial_message[3]
 		s.send(transimitmessage)
 	
-	elif Direction == "back" | "BACK" | "BACKWARD" |"backward":
+	elif Direction in back:
 		transimitmessage = Serial_message[4]
 		s.send(transimitmessage)
-	elif Direction == "camera right" | "CAMERA RIGHT"
+	elif Direction in camright:
 		transimitmessage = Serial_message[5]
 		s.send(transimitmessage)
-	elif Direction == "camera right" | "CAMERA RIGHT"
+	elif Direction in camleft:
 		transimitmessage = Serial_message[6]
 		s.send(transimitmessage)	
-	elif Direction == "off" | "STOP" |"stop":
+	elif Direction in ValidStop:
 		s.send('z')	
-	elif Direction == "take selfie" |	"now" | "NOW" | "take selfie" | "TAKE SELFIE"
+	elif Direction in selfie:
 		takeselfie();
 	return
 
