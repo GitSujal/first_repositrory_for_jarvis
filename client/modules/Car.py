@@ -49,18 +49,22 @@ def handledirection(mic,Direction):
 		else:
 			transimitmessage = Serial_message[2]
 			s.send(transimitmessage)
-	elif "ahead" in Direction.lower():
+
+	elif "front" in Direction.lower():
 		 if  "cam front"in Direction.lower():
 			transimitmessage = Serial_message[6]
 			s.send(transimitmessage)	
 		 else:
 			transimitmessage = Serial_message[4]
 			s.send(transimitmessage)
+
 	elif "back" in Direction.lower():
 			transimitmessage = Serial_message[3]
 			s.send(transimitmessage)
+
 	elif Direction in ValidStop:
 		s.send('z')	
+		
 	elif "selfie" in Direction.lower():
 		takeselfie(mic);
 	return
